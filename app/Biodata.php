@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Biodata extends Model
 {
-    //
+    public function kader()
+    {
+    	return $this->belongsTo('App\User');
+    }
 }
