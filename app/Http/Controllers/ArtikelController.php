@@ -7,16 +7,8 @@ use Illuminate\Http\Request;
 use TubesRAI\Http\Requests;
 use TubesRAI\Http\Controllers\Controller;
 
-use App\Biodata;
-
-class KaderController extends Controller
+class ArtikelController extends Controller
 {
-    // Supaya Harus login
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +17,6 @@ class KaderController extends Controller
     public function index()
     {
         //
-        return view('kader.index');
     }
 
     /**
