@@ -24,4 +24,8 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('/', function(){
 	return redirect('home');
 });
-Route::get('home', 'KaderController@index');
+Route::get('kader', 'KaderController@index');
+
+Route::group(['prefix' => 'kader'], function() {
+	Route::get('biodata', 'KaderController@biodata');
+});

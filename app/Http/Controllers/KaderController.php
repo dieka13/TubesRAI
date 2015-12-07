@@ -93,4 +93,9 @@ class KaderController extends Controller
     {
         //
     }
+
+    public function biodata()
+    {
+        return view('kader.biodata');
+    }
 }

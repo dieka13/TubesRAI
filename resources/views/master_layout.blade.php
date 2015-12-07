@@ -20,11 +20,9 @@
 		  <div class="top-bar-right">
 		    <ul class="dropdown menu" data-dropdown-menu>
 				<li class="has-submenu">
-			        <a href="#">{{ Auth::user()->nama }} ({{ Auth::user()->hak_akses }})</a>
+			        <a href="#">{{ Auth::user()->nama }} ({{ (Auth::user()->hak_akses == '0') ? "Super Admin" : ((Auth::user()->hak_akses == 1) ? "Admin" : "Kader") }})</a>
 			        <ul class="submenu menu" data-submenu>
-			          <li><a href="#">One</a></li>
-			          <li><a href="#">Two</a></li>
-			          <li><a href="#">Three</a></li>
+			          <li><a href="{{ url('auth/logout') }}">Logout</a></li>
 			        </ul>
 		      	</li>
 		    </ul>
@@ -36,7 +34,6 @@
 	<div class="row">
 		<div class="small-12 medium-3 columns">
 			@section('sidebar')
-			<h2>{{ Auth::user()->nama }}</h2>
 			<ul class="vertical menu" data-accordion-menu>
 			  <li>
 			    <a href="#">Artikel</a>
@@ -50,16 +47,27 @@
 			    <a href="#">Kegiatan</a>
 			    <ul class="menu vertical nested">
 			      <li><a href="#">Tambah Kegiatan</a></li>
-			      <li><a href="#">Item 2B</a></li>
+			      <li><a href="#">Lihat Kegiatan</a></li>
 			    </ul>
 			  </li>
 			  <li>
 			    <a href="#">Prestasi</a>
 			    <ul class="menu vertical nested">
 			      <li><a href="#">Tambah Prestasi</a></li>
-			      <li><a href="#">Item 2B</a></li>
+			      <li><a href="#">Lihat Prestasi</a></li>
 			    </ul>
 			  </li>
+
+			  @if (Auth::user()->hak_akses == 0 or Auth::user()->hak_akses == 1)
+			  <li>
+			    <a href="#">Admin</a>
+			    <ul class="menu vertical nested">
+			      <li><a href="#">Kelola Artikel</a></li>
+			      <li><a href="#">Kelola Kegiatan</a></li>
+			      <li><a href="#">Kelola Prestasi</a></li>
+			    </ul>
+			  </li>
+			  @endif
 			</ul>
 			@show
 		</div>

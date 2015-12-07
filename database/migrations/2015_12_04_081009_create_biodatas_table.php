@@ -16,7 +16,6 @@ class CreateBiodatasTable extends Migration
             $table->increments('id');
             $table->integer('kader_id')->unsigned();
             $table->timestamps();
-            $table->string('nama');
             $table->string('kelas');
             $table->string('divisi');
             $table->string('alamat');

@@ -22,13 +22,14 @@ class User extends Model implements AuthenticatableContract,
      * @var string
      */
     protected $table = 'kaders';
+    protected $fk = 'kader_id';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'hak_akses'];
+    protected $fillable = ['nama', 'email', 'password', 'hak_akses'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -39,21 +40,21 @@ class User extends Model implements AuthenticatableContract,
 
     public function biodata()
     {
-        return $this->hasOne('App\Biodata');
+        return $this->hasOne('TubesRAI\Biodata', $this->fk);
     }
 
     public function artikel()
     {
-        return $this->hasMany('App\Artikel');
+        return $this->hasMany('TubesRAI\Artikel', $this->fk);
     }
 
     public function kegiatan()
     {
-        return $this->hasMany('App\Kegiatan');
+        return $this->hasMany('TubesRAI\Kegiatan', $this->fk);
     }
 
     public function prestasi()
     {
-        return $this->hasMany('App\Prestasi');
+        return $this->hasMany('TubesRAI\Prestasi', $this->fk);
     }
 }
