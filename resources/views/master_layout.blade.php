@@ -35,6 +35,7 @@
 		<div class="small-12 medium-3 columns">
 			@section('sidebar')
 			<ul class="vertical menu" data-accordion-menu>
+			  <li><a href="{{ url('kader') }}">Home</a></li>
 			  <li>
 			    <a href="#">Artikel</a>
 			    <ul class="menu vertical nested">
@@ -62,6 +63,7 @@
 			  <li>
 			    <a href="#">Admin</a>
 			    <ul class="menu vertical nested">
+			      <li><a href="#">Kelola Kader</a></li>
 			      <li><a href="#">Kelola Artikel</a></li>
 			      <li><a href="#">Kelola Kegiatan</a></li>
 			      <li><a href="#">Kelola Prestasi</a></li>

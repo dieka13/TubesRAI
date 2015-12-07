@@ -28,4 +28,5 @@ Route::get('kader', 'KaderController@index');
 
 Route::group(['prefix' => 'kader'], function() {
 	Route::get('biodata', 'KaderController@biodata');
+	Route::post('biodata', 'KaderController@update_biodata');
 });

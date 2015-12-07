@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use TubesRAI\Http\Requests;
 use TubesRAI\Http\Controllers\Controller;
 
-use App\Biodata;
+use TubesRAI\Biodata;
 
 class KaderController extends Controller
 {
@@ -28,74 +28,31 @@ class KaderController extends Controller
         return view('kader.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    // 
+    public function biodata(Request $request)
     {
-        //
+        $biodata = $request->user()->biodata;
+
+        return view('kader.biodata', compact('biodata'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update_biodata(Request $request)
     {
-        //
-    }
+        if($request->user()->biodata){
+            $bio = $request->user()->biodata;
+        } else {
+            $bio = new Biodata;
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function biodata()
-    {
-        return view('kader.biodata');
+        $data = $request->all();
+        $bio['kader_id'] = $request->user()->id;
+        $bio['kelas'] = $data['kelas'];
+        $bio['divisi'] = $data['divisi'];
+        $bio['alamat'] = $data['alamat'];
+        $bio['tempat_lahir'] = $data['tempat_lahir'];
+        $bio['tanggal_lahir'] = $data['tanggal_lahir'];
+        $bio->save();
+        
+        return redirect('kader');
     }
 }

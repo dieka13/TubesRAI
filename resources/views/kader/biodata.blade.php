@@ -2,27 +2,25 @@
 
 @section('content')
 <div class="callout">
-	<h2>Biodata</h2>
-	<form>
+	{!! Form::open(array('url' => 'kader/biodata')) !!}
+	  <h2>Biodata</h2>
 	  <label>Kelas
 	    <input type="text" name="kelas" value="{{ $biodata->kelas or "" }}">
 	  </label>
-	  <label>
-	    How many puppies?
-	    <input type="number" value="100">
+	  <label>Divisi
+	    <input type="text" name="divisi" value="{{ $biodata->divisi or "" }}">
 	  </label>
-	  <label>
-	    What books did you read over summer break?
-	    <textarea placeholder="None"></textarea>
+	  <label>Alamat
+	    <input type="text" name="alamat" value="{{ $biodata->alamat or "" }}">
 	  </label>
-	  <label>Select Menu
-	    <select>
-	      <option value="husker">Husker</option>
-	      <option value="starbuck">Starbuck</option>
-	      <option value="hotdog">Hot Dog</option>
-	      <option value="apollo">Apollo</option>
-	    </select>
+	  <label>Tempat Lahir
+	    <input type="text" name="tempat_lahir" value="{{ $biodata->tempat_lahir or "" }}">
 	  </label>
+	  <label>Tanggal Lahir
+	    <input type="date" name="tanggal_lahir" value="{{ $biodata->tanggal_lahir or "" }}">
+	  </label>
+	  <p class="help-text" id="exampleHelpText">Masukkan dengan format : yyyy-mm-dd</p>
+	  <input type="submit" value="Simpan" class="button">
 	</form>
 </div>
 @stop
