@@ -14,7 +14,16 @@ class CreatePrestasisTable extends Migration
     {
         Schema::create('prestasis', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('kader_id')->unsigned();
+            $table->string('jenis');
+            $table->string('nama');
+            $table->string('tingkat');
+            $table->date('waktu');
+            $table->string('tempat');
+            $table->string('peringkat');
             $table->timestamps();
+
+            $table->foreign('kader_id')->references('id')->on('kaders')->onDelete('cascade');
         });
     }
 

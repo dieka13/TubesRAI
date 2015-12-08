@@ -8,6 +8,6 @@ class Kegiatan extends Model
 {
     public function kader()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('TubesRAI\User');
     }
 }

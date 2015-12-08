@@ -20,7 +20,7 @@ class CreateKegiatansTable extends Migration
             $table->integer('jumlah_membina');
             $table->date('tanggal');
 
-            $table->foreign('kader_id')->references('id')->on('kaders');
+            $table->foreign('kader_id')->references('id')->on('kaders')->onDelete('cascade');
         });
     }
 

@@ -22,7 +22,7 @@ class CreateBiodatasTable extends Migration
             $table->date('tanggal_lahir');
             $table->string('tempat_lahir');
 
-            $table->foreign('kader_id')->references('id')->on('kaders');
+            $table->foreign('kader_id')->references('id')->on('kaders')->onDelete('cascade');
         });
     }
 

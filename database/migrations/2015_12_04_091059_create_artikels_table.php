@@ -19,7 +19,7 @@ class CreateArtikelsTable extends Migration
             $table->string('judul');
             $table->text('isi');
 
-            $table->foreign('kader_id')->references('id')->on('kaders');
+            $table->foreign('kader_id')->references('id')->on('kaders')->onDelete('cascade');
         });
     }
 

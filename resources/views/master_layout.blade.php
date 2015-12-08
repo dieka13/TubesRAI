@@ -38,35 +38,38 @@
 			  <li><a href="{{ url('kader') }}">Home</a></li>
 			  <li>
 			    <a href="#">Artikel</a>
-			    <ul class="menu vertical nested">
+			    <ul class="menu vertical nested {{ (Request::is('kader/artikel') or Request::is('kader/artikel/*')) ? 'is-active' : '' }}">
 			      <li>
-			        <a href="#">Buat Artikel</a>
+			        <a href="{{ url('kader/artikel/tambah') }}">Buat Artikel</a>
+			        <a href="{{ url('kader/artikel') }}">Daftar Artikel</a>
 			      </li>
 			  </ul>
 			  </li>
 			  <li>
 			    <a href="#">Kegiatan</a>
-			    <ul class="menu vertical nested">
-			      <li><a href="#">Tambah Kegiatan</a></li>
-			      <li><a href="#">Lihat Kegiatan</a></li>
+			    <ul class="menu vertical nested {{ (Request::is('kader/kegiatan') or Request::is('kader/kegiatan/*')) ? 'is-active' : '' }}">
+			      <li><a href="{{ url('kader/kegiatan/tambah') }}">Tambah Kegiatan</a></li>
+			      <li><a href="{{ url('kader/kegiatan') }}">Lihat Kegiatan</a></li>
 			    </ul>
 			  </li>
 			  <li>
 			    <a href="#">Prestasi</a>
-			    <ul class="menu vertical nested">
-			      <li><a href="#">Tambah Prestasi</a></li>
-			      <li><a href="#">Lihat Prestasi</a></li>
+			    <ul class="menu vertical nested {{ (Request::is('kader/prestasi') or Request::is('kader/prestasi/*')) ? 'is-active' : '' }}">
+			      <li><a href="{{ url('kader/prestasi/tambah') }}">Tambah Prestasi</a></li>
+			      <li><a href="{{ url('kader/prestasi') }}">Lihat Prestasi</a></li>
 			    </ul>
 			  </li>
 
-			  @if (Auth::user()->hak_akses == 0 or Auth::user()->hak_akses == 1)
+			  @if (Auth::user()->hak_akses < 2)
 			  <li>
 			    <a href="#">Admin</a>
-			    <ul class="menu vertical nested">
-			      <li><a href="#">Kelola Kader</a></li>
-			      <li><a href="#">Kelola Artikel</a></li>
-			      <li><a href="#">Kelola Kegiatan</a></li>
-			      <li><a href="#">Kelola Prestasi</a></li>
+			    <ul class="menu vertical nested is-active">
+			      @if (Auth::user()->hak_akses == 0)
+			      	<li><a href="{{ url('admin/kader') }}">Kelola Kader</a></li>
+			      @endif
+			      <li><a href="{{ url('admin/artikel') }}">Kelola Artikel</a></li>
+			      <li><a href="{{ url('admin/kegiatan') }}">Kelola Kegiatan</a></li>
+			      <li><a href="{{ url('admin/prestasi') }}">Kelola Prestasi</a></li>
 			    </ul>
 			  </li>
 			  @endif

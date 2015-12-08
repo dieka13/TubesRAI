@@ -6,7 +6,7 @@
 		<h1>Selamat Datang</h1>
 		<div class="callout">
 			<h2>User Info</h2>
-			<table>
+			<table class="full-width">
 				<tbody>
 					<tr>
 						<td>Nama</td>
@@ -23,7 +23,7 @@
 			<h2>Biodata</h2>
 			@if (Auth::user()->biodata)
 
-			<table>
+			<table class="full-width">
 				<tbody>
 					<tr>
 						<td>Kelas</td>
