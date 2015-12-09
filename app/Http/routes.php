@@ -57,6 +57,7 @@ Route::group(['prefix' => 'kader'], function() {
 	Route::get('artikel/lihat/{id}', 'KaderController@lihat_artikel');
 });
 
+// Admin page
 Route::group(['prefix' => 'admin'], function(){
 	Route::get('kegiatan', 'AdminController@kegiatan');
 	Route::get('prestasi', 'AdminController@prestasi');
@@ -65,4 +66,11 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::get('kader/ubah_hak_akses/{id}', 'AdminController@update_kader');
 	Route::get('kader/hapus/{id}', 'AdminController@hapus_kader');
 	Route::delete('kader/hapus/{id}', 'AdminController@destroy_kader');
+});
+
+
+// API
+Route::group(['prefix' => 'api'], function(){
+	Route::get('kegiatan', 'KegiatanAPIController@index');
+	Route::post('kegiatan', 'KegiatanAPIController@store');
 });
